@@ -1,6 +1,10 @@
 #include <Arduino.h>
 #include <SevSeg.h>
 
+// Circuito básico con sensor de luz led y display de 4 digitos mostrando el valor.
+// Solo se muestra el valor en 1 digito, el número 4
+
+
 // Pin de sensor
 
 int sensorPin = A0;
