@@ -4,6 +4,8 @@
 // He cambiado el display led desde uno de 4 digitos a uno de solamente 1 digito. Para esto necesito reconfigurar algunos canales de salida y eliminar otro.
 // No agregué el punto decimal
 
+// Nota 2025-02-14: EL mismo código logra la misma función con un sensor de humedad de suelo
+
 // Pin de sensor
 
 int sensorPin = A0;

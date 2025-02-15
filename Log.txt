@@ -1,0 +1,68 @@
+### Log de Desarrollo: Sistema de Riego Automático
+
+Descripción del Proyecto
+El objetivo de este repositorio es contener los bocetos de desarrollo para construir un sistema de riego automático basado en Arduino. 
+
+El sistema constará de:
+Uno o más sensores de humedad para medir la humedad de la tierra.
+Una bomba de agua que se activará automáticamente cuando la humedad caiga por debajo de un límite preestablecido.
+
+Fecha: 2023/10/14
+Avances del Día
+1. Componentes Disponibles
+
+Bomba de agua:
+    Modelo: Brushless DC Pump AD20P-1230A.
+    Voltaje: 12V DC.
+    Potencia: 4.8W.
+    Caudal máximo: 240L/H.
+    Altura máxima: 300 cm.
+
+Problema: No puede ser alimentada directamente por Arduino debido a su voltaje y consumo de corriente.
+
+Relé:
+    Modelo: SRD-05VDC-SL-C.
+    Voltaje de activación: 5V DC.
+    Capacidad: 10A @ 30VDC.
+    Uso: Para controlar la bomba de 12V desde Arduino.
+
+Fuente de alimentación:
+Fuente de poder de 12V, 2A.
+
+Enlace de referencia: https://www.mercadolibre.cl/fuente-de-poder-adaptador-transformador-dc-12v-2a-55mm-21/p/MLC22599503#polycard_client=search-nordic&searchVariation=MLC22599503&position=15&search_layout=stack&type=product&tracking_id=c1ce19dc-2289-48fa-a199-4d97be245c93&wid=MLC2636170766&sid=search
+
+2. Boceto del Circuito
+
+Fuente de alimentación (12V):
+  (+) ---> Bomba (+)
+  (-) ---> NO del relé
+
+Bomba:
+  (+) ---> Fuente de alimentación (+)
+  (-) ---> COM del relé
+
+Relé:
+  VCC ---> 5V de Arduino
+  GND ---> GND de Arduino
+  IN  ---> Pin digital de Arduino (ej. D9)
+  COM ---> Bomba (-)
+  NO  ---> Fuente de alimentación (-)
+
+
+3. Próximos Pasos
+Testeo de sensores de humedad:
+    Medir los rangos de sequedad de la tierra.
+    Anotar las mediciones para establecer un límite de humedad que active la bomba.
+
+Obtención e integración de componentes:
+    Conectar el relé, la bomba y la fuente de alimentación según el boceto.
+    Verificar el funcionamiento del circuito.
+
+Desarrollo del código en Arduino:
+    Implementar la lógica para leer los sensores de humedad.
+    Controlar el relé (y, por ende, la bomba) en función de las mediciones.
+
+Notas Adicionales
+
+El uso de un relé es esencial para controlar la bomba de 12V desde Arduino, ya que los pines de Arduino no pueden manejar directamente el voltaje y corriente requeridos.
+La fuente de alimentación de 12V, 2A es adecuada para alimentar la bomba, ya que proporciona suficiente corriente (0.4A requeridos) y voltaje.
